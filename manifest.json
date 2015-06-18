@@ -1,0 +1,36 @@
+{
+    "name": "Youtube Plus",
+    "version": "1.1",
+    "description": "快速的取得並下載Youtube頁面中的影片、音軌",
+    "background": {
+        "scripts": ["scripts/resource.js", "scripts/background.js" ],
+        "persistent": false
+    },
+    "content_scripts": [
+        {
+            "matches": [ "*://*.youtube.com/*" ],
+            "js": [
+                "scripts/jquery.min.js",
+                "scripts/resource.js",
+                "scripts/convert.js",
+                "scripts/extension.js",
+                "scripts/app.js",
+                "scripts/content.js"
+            ],
+            "css": ["styles/main.css"]
+        }
+    ],
+    "permissions": [
+        "declarativeContent",
+        "tabs",
+        "downloads",
+        "*://*.youtube.com/", //"<all_urls>"
+        "*://*.ytimg.com/",
+        "*://*.youtu.be/"
+    ],
+    "icons" : {
+      "48" : "images/icon.png",
+      "128" : "images/icon.png"
+    },
+    "manifest_version": 2
+}
