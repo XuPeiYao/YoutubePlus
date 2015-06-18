@@ -1,10 +1,12 @@
 ## YoutubePlus 1.0.1
-³o¬O¤@­Ó°w¹ïYoutube¼v¤ù¤U¸üªºChromeÂX¥R¤¸¥ó
-À°§U¨Ï¥ÎªÌ§Ö³tªº¤U¸üYoutubeªº¼v¤ù¡B­µ­y
-¥»¤u¨ã¥D­n¥Î©ó¨Ï¥ÎªÌ`³Æ¥÷`©Î`¤U¸ü¦Û¤v¤W¶Çªº¼v¤ù`
+é€™æ˜¯ä¸€å€‹é‡å°Youtubeå½±ç‰‡ä¸‹è¼‰çš„Chromeæ“´å……å…ƒä»¶
+å¹«åŠ©ä½¿ç”¨è€…å¿«é€Ÿçš„ä¸‹è¼‰Youtubeçš„å½±ç‰‡ã€éŸ³è»Œ
+æœ¬å·¥å…·ä¸»è¦ç”¨æ–¼ä½¿ç”¨è€…`å‚™ä»½`æˆ–`ä¸‹è¼‰è‡ªå·±ä¸Šå‚³çš„å½±ç‰‡`
 
-# ±ÂÅv
-¥»±M®×±Ä¥Î MIT±ÂÅv±ø´Ú
+# æˆæ¬Š
+æœ¬å°ˆæ¡ˆæ¡ç”¨ MITæˆæ¬Šæ¢æ¬¾
+
+```
 Copyright (C) 2015 Pei-Yao,Xu
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
@@ -12,4 +14,6 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-¨Ï¥Î®É¶·ª`·N¦b³nÅé©M³nÅéªº©Ò¦³°Æ¥»¤¤³£¥²¶·¥]§t¥H¤Wª©ÅvÁn©ú©M¥»³\¥iÁn©ú¡C
+```
+
+* ä½¿ç”¨æ™‚é ˆæ³¨æ„åœ¨è»Ÿé«”å’Œè»Ÿé«”çš„æ‰€æœ‰å‰¯æœ¬ä¸­éƒ½å¿…é ˆåŒ…å«ä»¥ä¸Šç‰ˆæ¬Šè²æ˜å’Œæœ¬è¨±å¯è²æ˜ã€‚
