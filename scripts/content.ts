@@ -1,33 +1,35 @@
 ﻿declare var $,chrome;
 var port = chrome.runtime.connect();
+console.clear();
 //#region 按鈕建立
-function CreateDownloadButton() {
-        console.log("Call Create Download Button");
-        if ($("#YoutubePlusButton") && $("#YoutubePlusButton").length > 0) {
-            console.log("Page Had Download Button!");
-            return;//防止重複建立按鈕
-        }
-        var DownloadButton = $(".addto-button").clone();
-        $(DownloadButton).attr('id', 'YoutubePlusButton');
-        $(DownloadButton).removeClass('yt-uix-clickcard-target');
-        $(DownloadButton).removeClass("addto-button");
-        $(DownloadButton).addClass("downloadYoutube-icon-button");
-        $(DownloadButton).css('width', 'auto');
-        $(DownloadButton).attr('title', '下載');
-        $(DownloadButton).attr('data-tooltip-text', '下載');
-        $(DownloadButton).find("span").html("下載");
-        $(DownloadButton).attr("data-menu-content-id", "YoutubePlusMenu");
-        $('[data-trigger-for="action-panel-share"]').after(DownloadButton);
-        CreateDownloadMenu();
-        $("#YoutubePlusButton").off("click");
-        $("#YoutubePlusButton").on('click', OnClick); //連結事件函數
+function CreateDownloadButton() : boolean{
+    console.log("Call Create Download Button");
+    if ($("#YoutubePlusButton") && $("#YoutubePlusButton").length > 0) {
+        console.log("Page Had Download Button!");
+        return false;//防止重複建立按鈕
+    }
+    var DownloadButton = $(".addto-button").clone();
+    $(DownloadButton).attr('id', 'YoutubePlusButton');
+    $(DownloadButton).removeClass('yt-uix-clickcard-target');
+    $(DownloadButton).removeClass("addto-button");
+    $(DownloadButton).addClass("downloadYoutube-icon-button");
+    $(DownloadButton).css('width', 'auto');
+    $(DownloadButton).attr('title', '下載');
+    $(DownloadButton).attr('data-tooltip-text', '下載');
+    $(DownloadButton).find("span").html("下載");
+    $(DownloadButton).attr("data-menu-content-id", "YoutubePlusMenu");
+    $('[data-trigger-for="action-panel-share"]').after(DownloadButton);
+    CreateDownloadMenu();
+    $("#YoutubePlusButton").off("click");
+    $("#YoutubePlusButton").on('click', OnClick); //連結事件函數
+    return true;
 }
 function CreateDownloadMenu() {//產生下載選單
     $('#YoutubePlusMenu').remove();
     $("body").append($(Resource.MenuTemplet));
 
     $('body').click(function (evt) {
-        console.log($(evt.target).parents("#YoutubePlusButton").length);
+        
         if ($(evt.target).parents("#YoutubePlusButton").length > 0) return;//Show Button
         if ($(evt.target).parents("#YoutubePlusMenu").length > 0) return;//Show Menu
         if (evt.target.id != "YoutubePlusMenu"
@@ -45,12 +47,17 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse)=> {//等待
 })*/
 //#endregion
 
+
 //#region 監聽DOM NODE更新
 function nodeInsertedCallback(event) {
     if (event.target.nodeName && event.target.nodeName != "DIV") return;
-    if ($(event.target).attr("id") != "watch7-container") return;
-    console.log($("#eow-title").text());
-    CreateDownloadButton();
+    if ($(event.target).attr('id') == "YoutubePlusMenu") return;
+    
+    var Target = ["watch-header"];    
+    if (Target.indexOf($(event.target).attr("id")) > -1) return;
+    console.log("Header Update");
+    if (CreateDownloadButton()) {
+    }
 };
 document.addEventListener('DOMNodeInserted', nodeInsertedCallback);
 //#endregion
