@@ -130,13 +130,14 @@
                 signature = url.s || url.sig || url.signature;
 
             //#region 解密
-            if (signature.length != 81) {
-                var log = "密文簽章:" + signature + "\r\n";
-                signature = this.DecodingSignature(signature);
-                log += "明文簽章:" + signature;
-                console.log(log);
+			var old_signature = signature;
+			signature = this.DecodingSignature(signature);
+			
+            if (signature.length != 81 || old_signature.length == 81) {//Fix https://www.youtube.com/watch?v=VCDu8Qa34rQ
+                signature = old_signature;
             }
-
+			console.log("舊簽章:" + old_signature);
+			console.log("簽章:" + signature);
             //#endregion
             url.signature = signature;
 
