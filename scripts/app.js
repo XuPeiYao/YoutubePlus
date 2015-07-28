@@ -132,12 +132,12 @@
             //#region 解密
 			var old_signature = signature;
 			signature = this.DecodingSignature(signature);
-			
-            if (signature.length != 81 || old_signature.length == 81) {//Fix https://www.youtube.com/watch?v=VCDu8Qa34rQ
+			console.log("[A]:" + signature);
+            if (signature.length != 81 || (old_signature.length == 81 && signature.length != 81)) {//Fix https://www.youtube.com/watch?v=VCDu8Qa34rQ
                 signature = old_signature;
             }
-			console.log("舊簽章:" + old_signature);
-			console.log("簽章:" + signature);
+			console.log("[O]:" + old_signature);
+			console.log("[S]:" + signature);
             //#endregion
             url.signature = signature;
 

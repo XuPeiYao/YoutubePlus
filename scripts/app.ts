@@ -132,7 +132,7 @@ class YoutubeGetter{
             var old_signature = signature;
 			signature = this.DecodingSignature(signature);
 			
-            if (signature.length != 81 || old_signature.length == 81) {//Fix https://www.youtube.com/watch?v=VCDu8Qa34rQ
+            if (signature.length != 81 || (old_signature.length == 81 && signature.length != 81)) {//Fix https://www.youtube.com/watch?v=VCDu8Qa34rQ
                 signature = old_signature;
             }
 			console.log("舊簽章:" + old_signature);
