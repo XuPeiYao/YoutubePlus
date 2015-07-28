@@ -1,4 +1,4 @@
-## YoutubePlus 1.0.1
+## YoutubePlus 1.0.2
 這是一個針對Youtube影片下載的Chrome擴充元件
 幫助使用者快速的下載Youtube的影片、音軌
 本工具主要用於使用者`備份`或`下載自己上傳的影片`
