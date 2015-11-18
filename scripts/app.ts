@@ -55,32 +55,15 @@ class YoutubeGetter{
             var THIS = YoutubeGetter;
             //#region 取得解密程式碼
             THIS['FunctionName'] = Extension.InnerString(script, '"signature",', '(');
+
+            var FunctionBody = "var obj="+ Extension.InnerString(script,"var " + THIS['FunctionName'] + "=", "}") + "}";
+            var SubDataName = Extension.InnerString(FunctionBody, ";", ".");
+            var SubData = Extension.InnerString(script, "var " + SubDataName + "=", ";var ");
+
             
-            var script1 = script.substring(script.indexOf("function " + THIS['FunctionName']));
-            script1 = script1.substring(0, script1.indexOf(';function'));
-           
-            var script2 = script.substring(0, script.indexOf(";function " + THIS['FunctionName']) + 1);
-            script2 = script2.substring(script2.lastIndexOf(";var") + 1);
-            script2 = script2.substring(0, script2.length - 1);
-            //#endregion
-
-            //#region 切割解密函數
-            var Fun0 = Extension.InnerString(script1, "function ", "(");
-            var Fun1 = Extension.InnerString(script2, "var ", "=");
-            var Fun0Body = script1.replace(' ' + THIS['FunctionName'], '');
-            var Fun1Body = script2.substring(script2.indexOf("=") + 1);
-
-            var regex = new RegExp(Fun1, "g");
-            //#endregion
 
             //#region 寫入解碼程式
-            var decodingObj =
-                "var obj = function(value){" +
-                "var " + Fun1 + "=" + Fun1Body + ";" +
-                "var " + Fun0 + "=" + Fun0Body + ";" +
-                "return " + Fun0 + "(value);" +
-                "};" +
-                "obj('{SIG}');";
+            var decodingObj = "var " + SubDataName + "=" + SubData + ";" + FunctionBody + ";obj('{SIG}');";
             THIS['DecodingScript'] = decodingObj;
             //#endregion
             
