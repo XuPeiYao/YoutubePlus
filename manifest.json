@@ -1,6 +1,6 @@
 {
     "name": "Youtube Plus",
-    "version": "1.0.2",
+    "version": "1.0.4",
     "description": "快速的取得並下載Youtube頁面中的影片、音軌",
     "background": {
         "scripts": ["scripts/resource.js", "scripts/background.js" ],

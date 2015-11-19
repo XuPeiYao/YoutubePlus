@@ -1,7 +1,10 @@
-## YoutubePlus 1.0.3
+## YoutubePlus 1.0.4
 這是一個針對Youtube影片下載的Chrome擴充元件
 幫助使用者快速的下載Youtube的影片、音軌
 本工具主要用於使用者`備份`或`下載自己上傳的影片`
+
+#參考
+本專案取得影片位址之方式參考自[MediaGet](https://github.com/XuPeiYao/MediaGet)專案
 
 # 授權
 本專案採用 MIT授權條款
