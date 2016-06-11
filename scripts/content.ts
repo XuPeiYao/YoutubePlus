@@ -83,14 +83,14 @@ function AddMenuItem(Info) {
     $(item).removeAttr("id");
     $(item).removeAttr("hidden");
     $(item).removeAttr("style");
-    if (Info.attributes.codecs && Info.attributes.size) {
+    if (Info.attributes.codecs && Info.attributes.codecs.split(',').length > 1 && Info.attributes.size) {
         $(item).find(".item-type").html("[影音]");
-    } else if (Info.attributes.codecs) {
-        $(item).find(".item-type").html("[音訊]");
+    } else if (Info.attributes.mime == "video/x-flv") {
+        $(item).find(".item-type").html("[影音]");
     } else if (Info.attributes.size) {
         $(item).find(".item-type").html("[視訊]");
-    } else if (Info.attributes.mime =="video/x-flv") {
-        $(item).find(".item-type").html("[影音]");
+    } else if (Info.attributes.bitrate) {
+        $(item).find(".item-type").html("[音訊]");
     }
 
     if (Info.type == MediaGet.MediaTypes.Video) {
