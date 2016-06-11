@@ -40,15 +40,16 @@ function CreateDownloadMenu() {//產生下載選單
     });
     $('#YoutubePlusMenu').hide();
 } 
-/*
+
 chrome.runtime.onMessage.addListener((message, sender, sendResponse)=> {//等待接受建立按鈕指令
     if (!message.action || message.action != "createButton") return;
     CreateDownloadButton();
-})*/
+})
 //#endregion
 
 
 //#region 監聽DOM NODE更新
+/*
 function nodeInsertedCallback(event) {
     if (event.target.nodeName && event.target.nodeName != "DIV") return;
     if ($(event.target).attr('id') == "YoutubePlusMenu") return;
@@ -60,6 +61,7 @@ function nodeInsertedCallback(event) {
     }
 };
 document.addEventListener('DOMNodeInserted', nodeInsertedCallback);
+*/
 //#endregion
 
 CreateDownloadButton();//初次載入頁面執行建立按鈕動作

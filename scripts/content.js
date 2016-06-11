@@ -38,27 +38,26 @@ function CreateDownloadMenu() {
     });
     $('#YoutubePlusMenu').hide();
 }
-/*
-chrome.runtime.onMessage.addListener((message, sender, sendResponse)=> {//等待接受建立按鈕指令
-    if (!message.action || message.action != "createButton") return;
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (!message.action || message.action != "createButton")
+        return;
     CreateDownloadButton();
-})*/
+});
 //#endregion
 //#region 監聽DOM NODE更新
+/*
 function nodeInsertedCallback(event) {
-    if (event.target.nodeName && event.target.nodeName != "DIV")
-        return;
-    if ($(event.target).attr('id') == "YoutubePlusMenu")
-        return;
+    if (event.target.nodeName && event.target.nodeName != "DIV") return;
+    if ($(event.target).attr('id') == "YoutubePlusMenu") return;
+    
     var Target = ["watch-header"];
-    if (Target.indexOf($(event.target).attr("id")) > -1)
-        return;
+    if (Target.indexOf($(event.target).attr("id")) > -1) return;
     console.log("Header Update");
     if (CreateDownloadButton()) {
     }
-}
-;
+};
 document.addEventListener('DOMNodeInserted', nodeInsertedCallback);
+*/
 //#endregion
 CreateDownloadButton(); //初次載入頁面執行建立按鈕動作
 function OnClick() {
