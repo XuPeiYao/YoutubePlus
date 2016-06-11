@@ -1,12 +1,10 @@
-var Extension = (function () {
-    function Extension() {
-    }
-    Extension.InnerString = function (Data, Start, End) {
+class Extension {
+    static InnerString(Data, Start, End) {
         var result = Data.substring(0); //Clone
         result = result.substr(result.indexOf(Start) + Start.length);
         return result.substr(0, result.indexOf(End));
-    };
-    Extension.UrlToObject = function (Url) {
+    }
+    static UrlToObject(Url) {
         var result = {};
         var index = Url.indexOf('?'), hostUrl;
         if (index > -1) {
@@ -35,7 +33,6 @@ var Extension = (function () {
             return host + ary.join('&');
         };
         return result;
-    };
-    return Extension;
-})();
+    }
+}
 //# sourceMappingURL=extension.js.map

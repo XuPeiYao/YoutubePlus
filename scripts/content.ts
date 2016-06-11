@@ -73,6 +73,7 @@ function DisplayMenu() {
     var top = $("#YoutubePlusButton").offset().top + $("#YoutubePlusButton").height();
     $('#YoutubePlusMenu').css("left", left).css("top", top);
     $('#YoutubePlusMenu').show();
+    console.log("顯示清單");
 }
 
 function AddMenuItem(Info) {
@@ -80,30 +81,35 @@ function AddMenuItem(Info) {
     $(item).removeAttr("id");
     $(item).removeAttr("hidden");
     $(item).removeAttr("style");
-    if (Info.Codec.Audio && Info.Codec.Video) {
+    if (Info.attributes.codecs && Info.attributes.size) {
         $(item).find(".item-type").html("[影音]");
-    } else if (Info.Codec.Audio) {
+    } else if (Info.attributes.codecs) {
         $(item).find(".item-type").html("[音訊]");
-    } else if (Info.Codec.Video) {
+    } else if (Info.attributes.size) {
         $(item).find(".item-type").html("[視訊]");
-    } else if (Info.FileExt == "flv") {
+    } else if (Info.attributes.mime =="video/x-flv") {
         $(item).find(".item-type").html("[影音]");
     }
 
-    if (Info.Type == "video") {
-        $(item).find(".item-info").html(Info.Size);
+    if (Info.type == MediaGet.MediaTypes.Video) {
+        $(item).find(".item-info").html(Info.attributes.size);
     } else {
-        $(item).find(".item-info").html(Info.Rate.ABR.toString() + " kbps");
+        var time :any = "";
+        try {
+            time = (parseInt(Info.attributes.bitrate) / 1000);
+            time = time.toString().split('.')[0];
+        } catch (e) { }
+        $(item).find(".item-info").html(time + " kbps");
     }
     
-    $(item).find(".item-name").html(Info.FileExt);
+    $(item).find(".item-name").html(Info.attributes.mime.split('/')[1]);
 
     $(item).find(".item-icon").removeAttr("title");
-    $(item).find(".item-icon").addClass(Info.Type == "video"?"video-icon":"audio-icon");
+    $(item).find(".item-icon").addClass(Info.type == MediaGet.MediaTypes.Video?"video-icon":"audio-icon");
 
 
-    $(item).attr("file-ext", Info.FileExt);
-    $(item).attr("file-url", Info.Url);
+    $(item).attr("file-ext", Info.attributes.mime.split('/')[1]);
+    $(item).attr("file-url", Info.realUrl);
     $(item).on('click', (e) => {
         var target = $(e.target).parents(".addto-playlist-item");
         if (target.length == 0) target = e.target;

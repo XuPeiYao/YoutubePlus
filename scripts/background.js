@@ -7,7 +7,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
     } catch (e) { alert(e) }
 });*/
 var port = chrome.runtime.connect();
-chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (!message.action || message.action != "downloadFile")
         return;
     chrome.downloads.download({
