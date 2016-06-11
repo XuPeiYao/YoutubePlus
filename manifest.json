@@ -11,9 +11,10 @@
             "matches": [ "*://*.youtube.com/*" ],
             "js": [
                 "scripts/jquery.min.js",
+                "scripts/MediaGet.js",
                 "scripts/resource.js",
-                "scripts/convert.js",
                 "scripts/extension.js",
+                "scripts/convert.js",
                 "scripts/app.js",
                 "scripts/content.js"
             ],
