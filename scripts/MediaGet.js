@@ -347,6 +347,8 @@ var MediaGet;
             }
             getStreamMap(mediaJSON) {
                 function getStreamMapByKey(_mediaJSON_, key) {
+                    if (!_mediaJSON_['args'][key])
+                        return null;
                     var result = _mediaJSON_['args'][key].split(',')
                         .map(item => item.split('&'))
                         .map(item => {
@@ -372,7 +374,7 @@ var MediaGet;
                     });
                     return result;
                 }
-                return getStreamMapByKey(mediaJSON, 'url_encoded_fmt_stream_map').concat(getStreamMapByKey(mediaJSON, 'adaptive_fmts'));
+                return getStreamMapByKey(mediaJSON, 'url_encoded_fmt_stream_map').concat(getStreamMapByKey(mediaJSON, 'adaptive_fmts') || []);
             }
             convertMediaTypes(mime) {
                 mime = mime.split('/')[0];
