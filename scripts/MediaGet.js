@@ -316,10 +316,11 @@ var MediaGet;
                     console.log("FunctionName " + functionName);
                     if (functionName == null || functionName.length == 0)
                         return (value, inUrl) => value;
-                    var functionBody = `function${playerScript.innerString(`,${functionName}=function`, '}')};}`;
+                    var functionBody = `function${playerScript.innerString(`\n${functionName}=function`, '}')};}`;
                     console.log("FunctionBody " + functionBody);
-                    var functionRefName = functionBody.innerString(";\n", ".");
-                    var functionRef = playerScript.innerString("var " + functionRefName + "=", ";var");
+                    var functionRefName = functionBody.innerString(";", ".");
+                    var functionRef = playerScript.innerString("var " + functionRefName + "=", ";var ");
+                    console.log("FunctionRef " + functionRef);
                     var args = functionBody.innerString("(", ")");
                     functionBody = functionBody.substring(functionBody.indexOf("{") + 1);
                     functionBody = "function(" + args + "){var " + functionRefName + "=" + functionRef + ";" + functionBody;
