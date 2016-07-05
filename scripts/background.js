@@ -1,21 +1,13 @@
-/*
+/*棄用
 chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
-    try {
     console.log(changeInfo);
-        if (tab.url.match(Resource.Regex.Youtube) == null) return;
-        chrome.tabs.sendMessage(tabId, { action: "createButton" }, function (response) { });
-    } catch (e) { alert(e) }
-});*/
-chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
-    if (tab.status != "complete")
-        return;
-    if (!tab.url.match(Resource.Regex.Youtube))
-        return;
-    if (!changeInfo.title)
-        return;
+    if (tab.status != "complete") return;
+    if (!tab.url.match(Resource.Regex.Youtube)) return;
+    if (!changeInfo.title) return;
     chrome.tabs.sendMessage(tabId, { action: "createButton" }, function (response) { });
-    console.log(changeInfo);
+    
 });
+*/
 var port = chrome.runtime.connect();
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (!message.action || message.action != "downloadFile")

@@ -1,4 +1,4 @@
-﻿declare var MediaGet,$,chrome;//JQuery And Chrome
+﻿declare var $,chrome;//JQuery And Chrome
 class YoutubeGetter{
     //#region Current Tab Information
     public static Url: any;
@@ -7,25 +7,21 @@ class YoutubeGetter{
         return this.Url.match(Resource.Regex.Youtube) != null;
     }
     //#endregion
-
-    public static StreamList : any = new Array();
-    
-    public static Display() {
-        console.log(this.StreamList);
+        
+    public static Display(StreamList: MediaGet.MediaInfo[]) {
+        console.log(StreamList);
         var item = $("#YoutubePlusDownloadItem").clone();
         $("#YoutubePlusDownloadList").html("");
         $("#YoutubePlusDownloadList").append($(item));
-        for (var i = 0; i < this.StreamList.length; i++) {
-            AddMenuItem(this.StreamList[i]);
+        for (var i = 0; i < StreamList.length; i++) {
+            AddMenuItem(StreamList[i]);
         }
 
         DisplayMenu();
     }
-    //#endregion
 
     public static async Main(Url): Promise<void> {//進入點
         var yt = new MediaGet.Extractors.YoutubeExtractor();
-        this.StreamList = await yt.getMediaInfosAsync(Url);
-        this.Display();
+        this.Display(await yt.getMediaInfosAsync(Url));
     }
 };

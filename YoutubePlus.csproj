@@ -52,6 +52,7 @@
     <TypeScriptCompile Include="scripts\content.ts" />
     <TypeScriptCompile Include="scripts\convert.ts" />
     <TypeScriptCompile Include="scripts\extension.ts" />
+    <TypeScriptCompile Include="scripts\MediaGet.d.ts" />
     <TypeScriptCompile Include="scripts\resource.ts" />
   </ItemGroup>
   <PropertyGroup>

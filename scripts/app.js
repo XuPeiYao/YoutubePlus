@@ -12,26 +12,23 @@ class YoutubeGetter {
             return false;
         return this.Url.match(Resource.Regex.Youtube) != null;
     }
-    static Display() {
-        console.log(this.StreamList);
+    //#endregion
+    static Display(StreamList) {
+        console.log(StreamList);
         var item = $("#YoutubePlusDownloadItem").clone();
         $("#YoutubePlusDownloadList").html("");
         $("#YoutubePlusDownloadList").append($(item));
-        for (var i = 0; i < this.StreamList.length; i++) {
-            AddMenuItem(this.StreamList[i]);
+        for (var i = 0; i < StreamList.length; i++) {
+            AddMenuItem(StreamList[i]);
         }
         DisplayMenu();
     }
-    //#endregion
     static Main(Url) {
         return __awaiter(this, void 0, Promise, function* () {
             var yt = new MediaGet.Extractors.YoutubeExtractor();
-            this.StreamList = yield yt.getMediaInfosAsync(Url);
-            this.Display();
+            this.Display(yield yt.getMediaInfosAsync(Url));
         });
     }
 }
-//#endregion
-YoutubeGetter.StreamList = new Array();
 ;
 //# sourceMappingURL=app.js.map
