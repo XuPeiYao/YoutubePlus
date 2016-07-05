@@ -1,37 +1,39 @@
 {
-    "name": "Youtube Plus",
-    "version": "1.0.6",
-    "description": "快速的取得並下載Youtube頁面中的影片、音軌",
-    "background": {
-        "scripts": ["scripts/resource.js", "scripts/background.js" ],
-        "persistent": false
-    },
-    "content_scripts": [
-        {
-            "matches": [ "*://*.youtube.com/*" ],
-            "js": [
-                "scripts/jquery.min.js",
-                "scripts/MediaGet.js",
-                "scripts/resource.js",
-                "scripts/extension.js",
-                "scripts/convert.js",
-                "scripts/app.js",
-                "scripts/content.js"
-            ],
-            "css": ["styles/main.css"]
-        }
-    ],
-    "permissions": [
-        "declarativeContent",
-        "tabs",
-        "downloads",
-        "*://*.youtube.com/", //"<all_urls>"
-        "*://*.ytimg.com/",
-        "*://*.youtu.be/"
-    ],
-    "icons" : {
-      "48" : "images/icon.png",
-      "128" : "images/icon.png"
-    },
-    "manifest_version": 2
+  "name": "Youtube Plus",
+  "version": "1.0.6",
+  "description": "快速的取得並下載Youtube頁面中的影片、音軌",
+  "background": {
+    "scripts": [ "scripts/resource.js", "scripts/background.js" ],
+    "persistent": false
+  },
+  "author": "XuPeiYao",
+  "homepage_url": "https://github.com/XuPeiYao/YoutubePlus",
+  "content_scripts": [
+    {
+      "matches": [ "*://*.youtube.com/*" ],
+      "js": [
+        "scripts/jquery.min.js",
+        "scripts/MediaGet.js",
+        "scripts/resource.js",
+        "scripts/extension.js",
+        "scripts/convert.js",
+        "scripts/app.js",
+        "scripts/content.js"
+      ],
+      "css": [ "styles/main.css" ]
+    }
+  ],
+  "permissions": [
+    "declarativeContent",
+    "tabs",
+    "downloads",
+    "*://*.youtube.com/", //"<all_urls>"
+    "*://*.ytimg.com/",
+    "*://*.youtu.be/"
+  ],
+  "icons": {
+    "48": "images/icon.png",
+    "128": "images/icon.png"
+  },
+  "manifest_version": 2
 }

@@ -7,6 +7,7 @@
 本專案取得影片位址之方式參考自[MediaGetCore](https://github.com/XuPeiYao/MediaGetCore)專案。
 
 Javascript/Typescript中的實作參照自另一個專案[MediaGet.js](https://github.com/XuPeiYao/MediaGet.js)
+[開發過程](https://www.facebook.com/notes/%E5%BE%90%E5%9F%B9%E5%A0%AF/youtubeplus-%E9%96%8B%E7%99%BC%E9%81%8E%E7%A8%8B%E8%88%87%E7%A8%8B%E5%BC%8F%E7%A2%BC/1108908772500772)
 
 # 授權
 本專案採用`MIT許可證`
