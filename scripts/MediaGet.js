@@ -319,7 +319,7 @@ var MediaGet;
                     var functionBody = `function${playerScript.innerString(`\n${functionName}=function`, '}')};}`;
                     console.log("FunctionBody " + functionBody);
                     var functionRefName = functionBody.innerString(";", ".");
-                    var functionRef = playerScript.innerString("var " + functionRefName + "=", ";var ");
+                    var functionRef = playerScript.innerString("var " + functionRefName + "=", "};") + "}";
                     console.log("FunctionRef " + functionRef);
                     var args = functionBody.innerString("(", ")");
                     functionBody = functionBody.substring(functionBody.indexOf("{") + 1);
