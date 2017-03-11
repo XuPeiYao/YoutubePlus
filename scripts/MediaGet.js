@@ -1,9 +1,9 @@
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator.throw(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
         function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments)).next());
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
 var MediaGet;
@@ -96,11 +96,11 @@ var MediaGet;
 var MediaGet;
 (function (MediaGet) {
     "use strict";
+    var MethodTypes;
     (function (MethodTypes) {
         MethodTypes[MethodTypes["GET"] = 0] = "GET";
         MethodTypes[MethodTypes["POST"] = 1] = "POST";
-    })(MediaGet.MethodTypes || (MediaGet.MethodTypes = {}));
-    var MethodTypes = MediaGet.MethodTypes;
+    })(MethodTypes = MediaGet.MethodTypes || (MediaGet.MethodTypes = {}));
     class ExtractorBase {
         isMatch(url) {
             return MediaGet.matchRegex[this.constructor].test(url);
@@ -111,7 +111,7 @@ var MediaGet;
         }
         //#region Extractor Factory
         downloadStringAsync(method, url, data) {
-            return __awaiter(this, void 0, Promise, function* () {
+            return __awaiter(this, void 0, void 0, function* () {
                 return new Promise((resolve, reject) => {
                     var xhr = new XMLHttpRequest();
                     xhr.onreadystatechange = function () {
@@ -130,7 +130,7 @@ var MediaGet;
             });
         }
         downloadJSONAsync(method, url, data) {
-            return __awaiter(this, void 0, Promise, function* () {
+            return __awaiter(this, void 0, void 0, function* () {
                 return JSON.parse(yield this.downloadStringAsync(method, url, data));
             });
         }
@@ -141,7 +141,7 @@ var MediaGet;
             return new DOMParser().parseFromString(XMLString, "text/xml");
         }
         downloadHtmlDocumentAsync(method, url, data) {
-            return __awaiter(this, void 0, Promise, function* () {
+            return __awaiter(this, void 0, void 0, function* () {
                 return this.ParseHTML(yield this.downloadStringAsync(method, url, data));
             });
         }
@@ -158,7 +158,7 @@ var MediaGet;
          */
         class XuiteExtractor extends MediaGet.ExtractorBase {
             getMediaInfosAsync(url) {
-                return __awaiter(this, void 0, Promise, function* () {
+                return __awaiter(this, void 0, void 0, function* () {
                     return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
                         if (!this.isMatch(url))
                             throw new MediaGet.UrlFormatException();
@@ -225,7 +225,7 @@ var MediaGet;
                 });
             }
             getMediaApiData(mediaId) {
-                return __awaiter(this, void 0, Promise, function* () {
+                return __awaiter(this, void 0, void 0, function* () {
                     return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
                         var apiData = yield this.downloadHtmlDocumentAsync(MediaGet.MethodTypes.GET, `http://vlog.xuite.net/flash/player?media=${mediaId}`);
                         var propertys = apiData.getElementsByTagName('property');
@@ -257,7 +257,7 @@ var MediaGet;
          */
         class YoutubeExtractor extends MediaGet.ExtractorBase {
             getMediaInfosAsync(url) {
-                return __awaiter(this, void 0, Promise, function* () {
+                return __awaiter(this, void 0, void 0, function* () {
                     if (!this.isMatch(url))
                         throw new MediaGet.UrlFormatException();
                     var youtubePage = yield this.downloadHtmlDocumentAsync(MediaGet.MethodTypes.GET, url, null);
@@ -310,9 +310,10 @@ var MediaGet;
                 return this.safeEval(script + ";return ytplayer.config;");
             }
             getDecodingFunction(url) {
-                return __awaiter(this, void 0, Promise, function* () {
+                return __awaiter(this, void 0, void 0, function* () {
                     var playerScript = yield this.downloadStringAsync(MediaGet.MethodTypes.GET, url);
-                    var functionName = playerScript.innerString('"signature",', "(");
+                    var functionName = playerScript.innerString('"signature",', "))")
+                        .innerString('"signature",', "(");
                     console.log("FunctionName " + functionName);
                     if (functionName == null || functionName.length == 0)
                         return (value, inUrl) => value;
@@ -421,11 +422,11 @@ var MediaGet;
 })(MediaGet || (MediaGet = {}));
 var MediaGet;
 (function (MediaGet) {
+    var MediaTypes;
     (function (MediaTypes) {
         MediaTypes[MediaTypes["Video"] = 0] = "Video";
         MediaTypes[MediaTypes["Audio"] = 1] = "Audio";
-    })(MediaGet.MediaTypes || (MediaGet.MediaTypes = {}));
-    var MediaTypes = MediaGet.MediaTypes;
+    })(MediaTypes = MediaGet.MediaTypes || (MediaGet.MediaTypes = {}));
 })(MediaGet || (MediaGet = {}));
 var Extractors = MediaGet.Extractors;
 var MediaGet;
@@ -434,4 +435,4 @@ var MediaGet;
         [MediaGet.Extractors.YoutubeExtractor]: /http(s)?:\/\/www.youtube.com\/watch\?v=.+/
     };
 })(MediaGet || (MediaGet = {}));
-//# sourceMappingURL=MediaGet.js.map
+//# sourceMappingURL=mediaget.js.map
